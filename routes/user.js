@@ -6,7 +6,6 @@ router.post('/gauth', async(req, res) => {
     try {
         User.findOne({ google_id: req.body.googleId }).then(async(user) => {
             if (!user) {
-                let username = req.body.email.split('@')[0]
                 req.body.imageUrl = req.body.imageUrl.slice(0, -4)
                 req.body.imageUrl = `${req.body.imageUrl}1000-c`
                 let newUser = User({
@@ -17,7 +16,6 @@ router.post('/gauth', async(req, res) => {
                     google_id: req.body.googleId,
                     pfp_url: req.body.imageUrl,
                     access_token: req.body.access_token,
-                    username: username
                 })
                 newUser.save()
             } else {
@@ -32,3 +30,23 @@ router.post('/gauth', async(req, res) => {
         console.log(err)
     }
 });
+
+router.get('/me', async(req, res) => {
+    let user = await User.findOne({ access_token: req.query.access_token })
+    if (user) {
+        res.json({
+            success: true,
+            data: {
+                email: user.email,
+                pfp_url: user.pfp_url,
+                name: user.name,
+                vixons: user.vixons,
+                aadhaar: user.aadhaar
+            }
+        })
+    } else {
+        res.json({ success: false, message: 'User not found!' })
+    }
+})
+
+module.exports = router

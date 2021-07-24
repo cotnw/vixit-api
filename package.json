@@ -4,13 +4,14 @@
     "description": "REST API for vixit",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node app.js",
+        "dev": "nodemon app.js"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/cotnw/vixit-api.git"
     },
-    "author": "",
+    "author": "cotnw",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/cotnw/vixit-api/issues"
@@ -21,6 +22,8 @@
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
-        "mongoose": "^5.13.3"
+        "mongoose": "^5.13.3",
+        "nodemon": "^2.0.12",
+        "reverse-geocoding": "^3.0.2"
     }
 }

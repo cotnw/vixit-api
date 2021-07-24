@@ -6,6 +6,9 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const mapRouter = require('./routes/map');
+const verifyRouter = require('./routes/verify');
+const leaderboardRouter = require('./routes/leaderboard');
 
 const db = process.env.MONGODB_URL;
 
@@ -33,5 +36,8 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/mapdata', mapRouter);
+app.use('/verify', verifyRouter);
+app.use('/leaderboard', leaderboardRouter);
 
 module.exports = app;
