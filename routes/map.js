@@ -17,7 +17,7 @@ router.get('/', async(req, res) => {
         covid19IndiaData.data[state]['districts'][district]['coords'] = `${forward.data.data[0].latitude}, ${forward.data.data[0].longitude}`
         covid19IndiaData.data[state]['districts'][district]['vacc1'] = ((covid19IndiaData.data[state]['districts'][district].total.vaccinated1 / covid19IndiaData.data[state]['districts'][district].meta.population) * 100).toFixed(2)
         covid19IndiaData.data[state]['districts'][district]['vacc2'] = ((covid19IndiaData.data[state]['districts'][district].total.vaccinated2 / covid19IndiaData.data[state]['districts'][district].meta.population) * 100).toFixed(2)
-        covid19IndiaData.data[state]['districts'][district]['vacc3'] = ((1 - ((covid19IndiaData.data[state]['districts'][district].total.vaccinated1 + covid19IndiaData.data[state]['districts'][district].total.vaccinated2) / covid19IndiaData.data[state]['districts'][district].meta.population)) * 100).toFixed(2)
+        covid19IndiaData.data[state]['districts'][district]['vacc3'] = ((1 - ((covid19IndiaData.data[state]['districts'][district].total.vaccinated1) / covid19IndiaData.data[state]['districts'][district].meta.population)) * 100).toFixed(2)
         covid19IndiaData.data[state]['districts'][district]['title'] = district
         response.push(covid19IndiaData.data[state]['districts'][district])
         i += 1
